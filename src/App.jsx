@@ -1,14 +1,16 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useRef, useState } from "react";
 import "./App.css";
 function genPassWord(characterSet, len) {
   let password = "";
-  // const randomBytes = new Uint8Array(length);
-  // window.crypto.getRandomValues(randomBytes);
-  // randomBytes.forEach((el) => console.log(el));
+  // Used the in-built browser random API to get some random digits, apparently this is more secure
+  const randomBytes = new Uint8Array(len);
+  window.crypto.getRandomValues(randomBytes);
   for (let i = 0; i < len; i++) {
-    const l = Math.floor(Math.random() * characterSet.length) + 1;
-    let randomIndex = l % characterSet.length;
+    // Math.random can also be used for this though, and i don't really see the difference
+    // const l = Math.floor(Math.random() * characterSet.length) + 1;
+    let randomIndex = randomBytes[i] % characterSet.length;
     password += characterSet[randomIndex];
   }
   return password;
@@ -18,7 +20,6 @@ function App() {
   const [digits] = useState(true);
   const [letters, setLetters] = useState(true);
   const [syms, setSyms] = useState(true);
-  // eslint-disable-next-line no-unused-vars
   const [regen, setRegen] = useState(true);
   let pwd = useRef(null);
   const bg = len <= 6 ? "#D1364E" : len > 8 ? "#1c815a" : "#BE4E3A";
