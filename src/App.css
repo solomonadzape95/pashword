@@ -1,42 +1,265 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
+  background: transparent;
+}
+.app {
+  color: white;
+  padding: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.app > div:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.app > div:nth-of-type(2) {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 3rem;
+}
+.password {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid white;
+  font-size: 2rem;
+  position: relative;
+  padding: 3px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.password span {
+  cursor: pointer;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+/* svg {
+  position: relative;
+  left: 90%;
+  cursor: pointer;
+} */
+button {
+  padding: 6px 12px;
+  background: white;
+  border: none;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+input[type="range"] {
+  height: 37px;
+  appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  /* animate: 0.2s; */
+  box-shadow: 0px 0px 1px #000000;
+  background: #fff;
+  border-radius: 5px;
+  border: 0px solid #000000;
+}
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10.5px;
+}
+/* input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #a009;
+}
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 1px #000000;
+  background: #fff;
+  border-radius: 5px;
+}
+input[type="range"]::-moz-range-thumb {
+  box-shadow: 0px 0px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px #000000;
+}
+input[type="range"]::-ms-fill-upper {
+  background: red;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px #000000;
+}
+input[type="range"]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: red;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: green;
+} */
+.cr-wrapper *,
+.cr-wrapper *::before,
+.cr-wrapper *::after {
+  box-sizing: content-box !important;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cr-wrapper input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.cr-wrapper span {
+  font-size: 16px;
 }
 
-.card {
-  padding: 2em;
+.cr-wrapper {
+  display: table;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  margin-bottom: 5px;
 }
 
-.read-the-docs {
-  color: #888;
+.cr-wrapper input[type="checkbox"] ~ .cr-input {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #94a3b8;
+  transition: background 250ms;
+  border: 1px solid #f1f5f9;
+  border-radius: 3px;
+  transform: translate(0, -50%);
+}
+
+.cr-wrapper input[type="radio"] ~ .cr-input {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #94a3b8;
+  transition: background 250ms;
+  border: 1px solid #f1f5f9;
+  border-radius: 20px;
+  transform: translate(0, -50%);
+}
+
+.cr-wrapper input[type="checkbox"] ~ .cr-input::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 4px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  transition: background 250ms;
+  background-color: #ffffff;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.cr-wrapper input[type="radio"] ~ .cr-input::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 4px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 20px;
+  background: #ffffff;
+  transition: background 250ms;
+}
+
+.cr-wrapper input:checked ~ .cr-input::after {
+  display: block;
+}
+
+.cr-wrapper:hover input[type="checkbox"]:not([disabled]) ~ .cr-input,
+.cr-wrapper input[type="checkbox"]:focus ~ .cr-input {
+  background: #e2e8f0;
+  border-color: #64748b;
+}
+
+.cr-wrapper:hover input[type="radio"]:not([disabled]) ~ .cr-input,
+.cr-wrapper input[type="radio"]:focus ~ .cr-input {
+  background: #e2e8f0;
+  border-color: #64748b;
+}
+
+.cr-wrapper input[type="checkbox"]:checked ~ .cr-input {
+  background: #40a9bf;
+  border-color: #2f7d8e;
+}
+
+.cr-wrapper input[type="radio"]:checked ~ .cr-input {
+  background: #40a9bf;
+  border-color: #2f7d8e;
+}
+
+.cr-wrapper input[type="checkbox"]:disabled ~ .cr-input,
+.cr-wrapper input[type="radio"]:disabled ~ .cr-input {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cr-wrapper input[type="checkbox"]:disabled ~ span,
+.cr-wrapper input[type="radio"]:disabled ~ span {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cr-wrapper input[type="checkbox"]:disabled ~ .cr-input::after {
+  background: #ffffff;
+}
+
+.cr-wrapper input[type="radio"]:disabled ~ .cr-input::after {
+  background: #ffffff;
+}
+
+.cr-wrapper:hover input[type="checkbox"]:not([disabled]):checked ~ .cr-input,
+.cr-wrapper input[type="checkbox"]:checked:focus ~ .cr-input {
+  background: #2f7d8e;
+  border-color: #225d69;
+}
+
+.cr-wrapper:hover input[type="radio"]:not([disabled]):checked ~ .cr-input,
+.cr-wrapper input[type="radio"]:checked:focus ~ .cr-input {
+  background: #2f7d8e;
+  border-color: #225d69;
 }
