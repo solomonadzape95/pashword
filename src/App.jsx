@@ -18,6 +18,8 @@ function App() {
   const [digits] = useState(true);
   const [letters, setLetters] = useState(true);
   const [syms, setSyms] = useState(true);
+  // eslint-disable-next-line no-unused-vars
+  const [regen, setRegen] = useState(true);
   let pwd = useRef(null);
   const bg = len <= 6 ? "#D1364E" : len > 8 ? "#1c815a" : "#BE4E3A";
   let characterSet = "0123456789";
@@ -36,7 +38,7 @@ function App() {
     <div className="app" style={{ background: bg }}>
       <p className="password">
         <p>{pwd.current}</p>
-        <span title="Regenerate Password" onClick={() => setLen((len) => len)}>
+        <span title="Regenerate Password" onClick={() => setRegen((r) => !r)}>
           <MySvg />
         </span>
       </p>
